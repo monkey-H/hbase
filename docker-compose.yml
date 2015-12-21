@@ -1,6 +1,6 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/hbase_master:v2
-  command: '/usr/sbin/sshd -D'
+  command: 'service ssh start && sed -i "s/server171/monkey_hbase_master/g" /root/hadoop-2.3.0/etc/hadoop/slaves /root/hadoop-2.3.0/etc/hadoop/core-site.xml /root/hadoop-2.3.0/etc/hadoop/yarn-site.xml /root/hadoop-2.3.0/etc/hadoop/mapred-site.xml /root/zookeeper-3.4.5/conf/zoo.cfg /root/hbase-0.98.16.1-hadoop2/conf/hbase-site.xml /root/hbase-0.98.16.1-hadoop2/conf/regionservers && sed -i "s/home/data\/hbase/g" /root/hadoop-2.3.0/etc/hadoop/core-site.xml /root/hadoop-2.3.0/etc/hadoop/hdfs-site.xml /root/zookeeper-3.4.5/conf/zoo.cfg && mkdir -p /data/hbase/zookeeper/data && echo "1" > /data/hbase/zookeeper/data/myid && hdfs namenode -format && start-dfs.sh && start-yarn.sh && zkServer.sh start && start-hbase.sh && service ssh stop && /usr/sbin/sshd -D'
 slave:
   image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-  command: '/usr/sbin/sshd -D'
+  command: 'service ssh start && sed -i "s/server171/monkey_hbase_master/g" /root/hadoop-2.3.0/etc/hadoop/slaves /root/hadoop-2.3.0/etc/hadoop/core-site.xml /root/hadoop-2.3.0/etc/hadoop/yarn-site.xml /root/hadoop-2.3.0/etc/hadoop/mapred-site.xml /root/zookeeper-3.4.5/conf/zoo.cfg /root/hbase-0.98.16.1-hadoop2/conf/hbase-site.xml /root/hbase-0.98.16.1-hadoop2/conf/regionservers && sed -i "s/home/data\/hbase/g" /root/hadoop-2.3.0/etc/hadoop/core-site.xml /root/hadoop-2.3.0/etc/hadoop/hdfs-site.xml /root/zookeeper-3.4.5/conf/zoo.cfg && mkdir -p /data/hbase/zookeeper/data && echo "2" > /data/hbase/zookeeper/data/myid && service ssh stop && /usr/sbin/sshd -D'
