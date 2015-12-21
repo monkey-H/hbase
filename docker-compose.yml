@@ -1,6 +1,3 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/hbase_master:v2
-  command: '/bin/bash -c \'service ssh start && sed -i "s/server171/monkey_hbase_master/g" /root/hadoop-2.3.0/etc/hadoop/slaves && service ssh stop && /usr/sbin/sshd -D\''
-slave:
-  image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-  command: '/bin/bash -c \'service ssh start && sed -i "s/server171/monkey_hbase_master/g" /root/hadoop-2.3.0/etc/hadoop/slaves && service ssh stop && /usr/sbin/sshd -D\''
+  command: '/bin/bash -c "service ssh start && sed -i \\\"s/server171/monkey_hbase_master/g\\\" /root/hadoop-2.3.0/etc/hadoop/slaves && service ssh stop && /usr/sbin/sshd -D'
