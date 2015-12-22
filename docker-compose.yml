@@ -1,6 +1,8 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/hbase_master:v2
   command: '/usr/sbin/sshd -D' 
+  hostname: monkey_hbase2_master
 slave:
   image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
   command: '/usr/sbin/sshd -D'
+  hostname: monkey_hbase2_slave
